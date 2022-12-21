@@ -1,0 +1,24 @@
+.call-modal{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.call_inner-modal{
+  margin-top: 15%;
+  width: 20rem  ;
+  height: 12rem;
+  background-color: aliceblue;
+  border-radius: 1rem;
+}
+
+.call-text{
+  color: rgba(52, 52, 52, 0.516);
+}
+
+.call-name{
+  color: black;
+}

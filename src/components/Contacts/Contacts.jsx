@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 
-const Contacts = ({contacts, handleDelete, handleEdit}) => {
+const Contacts = ({contacts, handleDelete, handleEdit, handleCall}) => {
   console.log(Array.isArray(contacts))
   console.log(contacts)
   return <div className="d-flex justify-content-between container mt-5">
@@ -18,7 +18,7 @@ const Contacts = ({contacts, handleDelete, handleEdit}) => {
         </Card.Text>
         <Button onClick={() => handleDelete(item.id)} variant="danger" className="me-1">DELETE</Button>
         <Button onClick={() => handleEdit(index)} variant="primary" className="me-1">EDIT</Button>
-        <Button variant="success">CALL</Button>
+        <Button onClick={() => handleCall(item.name)} variant="success">CALL</Button>
       </Card.Body>
     </Card>
       ))}

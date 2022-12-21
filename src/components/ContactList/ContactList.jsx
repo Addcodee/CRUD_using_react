@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import EditModal from "../../EditModal/EditModal";
+import EditModal from "../EditModal/EditModal";
 import AddContact from "../AddContact/AddContact";
 import Contacts from "../Contacts/Contacts";
 import Header from "../Header/Header";
+import CallModal from "../../CallModal/CallModal";
 
 const ContactList = () => {
   const [contacts, setContacts] = useState([]);
 
   const [modal, setModal] = useState(false);
 
+  const [callModal, setCallModal] = useState(false)
+
   const [editContact, setEditContact] = useState({});
+
+  const [name, setName] = useState('')
 
   function handleContact(newObj) {
     const newContacts = [...contacts];
@@ -29,8 +34,9 @@ const ContactList = () => {
     setEditContact(contacts[index]);
   }
 
-  function handleEditClose() {
+  function handleClose() {
     setModal(false);
+    setCallModal(false)
   }
 
   function handleSaveEdit(newContact) {
@@ -43,7 +49,12 @@ const ContactList = () => {
       return item;
     });
     setContacts(newContacts);
-    handleEditClose();
+    handleClose();
+  }
+
+  function handleCall(name){
+    setCallModal(true);
+    setName(name)
   }
 
   return (
@@ -59,6 +70,7 @@ const ContactList = () => {
                 handleDelete={handleDelete}
                 handleEdit={handleEdit}
                 handleSaveEdit={handleSaveEdit}
+                handleCall={handleCall}
               />
             }
           />
@@ -76,9 +88,12 @@ const ContactList = () => {
       {modal ? (
         <EditModal
           editContact={editContact}
-          handleEditClose={handleEditClose}
+          handleClose={handleClose}
           handleSaveEdit={handleSaveEdit}
         />
+      ) : null}
+      {callModal ? (
+        <CallModal name={name} handleClose={handleClose} />
       ) : null}
     </div>
   );

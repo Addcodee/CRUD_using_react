@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./EditModal.css";
 
 const EditModal = ({
-  handleEditClose,
+  handleClose,
   editContact,
   handleSaveEdit,
 }) => {
@@ -45,7 +45,7 @@ const EditModal = ({
         <div className="close">
           <button
             className="btn-close"
-            onClick={() => handleEditClose()}
+            onClick={() => handleClose()}
           ></button>
         </div>
         <form
